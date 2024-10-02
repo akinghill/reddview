@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { RefreshCw, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { fetchSubredditPosts } from '@/app/api';
@@ -25,7 +25,7 @@ export function SubredditLane({ subreddit, onRemove }: SubredditLaneProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  async function loadPosts() {
+  const loadPosts = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -33,15 +33,15 @@ export function SubredditLane({ subreddit, onRemove }: SubredditLaneProps) {
       setPosts(fetchedPosts);
     } catch (error) {
       console.error('Error fetching posts:', error);
-      setError('Failed to load posts. Subreddit may not exist.');
+      setError('Failed to load posts. Please try again.');
     } finally {
       setLoading(false);
     }
-  }
+  }, [subreddit]);
 
   useEffect(() => {
     loadPosts();
-  }, [subreddit]);
+  }, [loadPosts]);
 
   return (
     <div className="flex-shrink-0 w-80 bg-card rounded-lg shadow-lg p-4 h-[calc(100vh-2rem)] overflow-y-auto">
