@@ -61,15 +61,3 @@ Built to satisfy the requirements of the [Reddit Client](https://roadmap.sh/proj
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Acknowledgements
-
-- [Reddit API](https://www.reddit.com/dev/api/)
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Lucide](https://lucide.dev/)
